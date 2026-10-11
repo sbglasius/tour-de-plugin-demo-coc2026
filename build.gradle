@@ -68,6 +68,22 @@ dependencies {
     testImplementation "org.apache.grails:grails-testing-support-web"
     testImplementation "org.mockito:mockito-core"
     testImplementation "org.spockframework:spock-core"
+
+    // Plugin 1 -- Spring Security. A core module in Grails 8: no version here,
+    // the grails-bom pins it to the framework version.
+    implementation "org.apache.grails:grails-spring-security"
+    // Plugin 2 -- i18n Enums. Not a core module, so it carries its own version.
+    implementation "org.grails.plugins:i18n-enums:8.0.0"
+    // Plugin 3 -- Web Console. The only one of the four still on a release
+    // candidate; everything else here is GA.
+    implementation "org.grails.plugins:grails-web-console:8.0.0-RC2"
+    // Mail is a core module again in Grails 8 -- the old standalone
+    // grails-plugins/grails-mail stops at 5.0.x.
+    implementation "org.apache.grails:grails-mail"
+    // Plugin 4 -- GreenMail. Development and test only: it must never be on
+    // the classpath in production. Note the group id: io.github.gpc.
+    testAndDevelopmentOnly "io.github.gpc:greenmail:8.0.0"
+
 }
 
 compileJava.options.release = 21
