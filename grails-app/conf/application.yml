@@ -36,3 +36,28 @@ hibernate:
     queries: false
     use_second_level_cache: false
     use_query_cache: false
+---
+# Mail goes to the port GreenMail is listening on. The plugin is enabled by
+# default; set grails.plugin.greenmail.disabled to turn it off.
+grails:
+  mail:
+    host: localhost
+    port: 3025
+    props:
+      "mail.smtp.auth": false
+  plugin:
+    greenmail:
+      ports:
+        smtp: 3025
+
+environments:
+  test:
+    # Integration tests use their own port, so they can run while the
+    # development application is up and holding 3025.
+    grails:
+      mail:
+        port: 3125
+      plugin:
+        greenmail:
+          ports:
+            smtp: 3125

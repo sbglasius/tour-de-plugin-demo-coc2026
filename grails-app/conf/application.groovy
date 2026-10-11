@@ -30,7 +30,11 @@ grails.plugin.springsecurity.controllerAnnotations.staticRules = [
 		[pattern: '/webjars/**',     access: ['permitAll']],
 		// The web-console runs arbitrary Groovy against the live application.
 		// securing it with ROLE_ADMIN.
-		[pattern: '/console/**',     access: ['ROLE_ADMIN']]
+		[pattern: '/console/**',     access: ['ROLE_ADMIN']],
+		// Same lesson as the console: every plugin that adds a URL needs a rule.
+		// The GreenMail inbox shows everything the application has sent.
+		[pattern: '/greenmail/**',   access: ['ROLE_ADMIN']]
+
 ]
 
 grails.plugin.springsecurity.filterChain.chainMap = [
