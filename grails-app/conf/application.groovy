@@ -13,16 +13,24 @@ grails.plugin.springsecurity.userLookup.userDomainClassName = 'demo.User'
 grails.plugin.springsecurity.userLookup.authorityJoinClassName = 'demo.UserRole'
 grails.plugin.springsecurity.authority.className = 'demo.Role'
 grails.plugin.springsecurity.controllerAnnotations.staticRules = [
-	[pattern: '/',               access: ['permitAll']],
-	[pattern: '/error',          access: ['permitAll']],
-	[pattern: '/index',          access: ['permitAll']],
-	[pattern: '/index.gsp',      access: ['permitAll']],
-	[pattern: '/shutdown',       access: ['permitAll']],
-	[pattern: '/assets/**',      access: ['permitAll']],
-	[pattern: '/**/js/**',       access: ['permitAll']],
-	[pattern: '/**/css/**',      access: ['permitAll']],
-	[pattern: '/**/images/**',   access: ['permitAll']],
-	[pattern: '/**/favicon.ico', access: ['permitAll']]
+		[pattern: '/',               access: ['permitAll']],
+		[pattern: '/error',          access: ['permitAll']],
+		[pattern: '/index',          access: ['permitAll']],
+		[pattern: '/index.gsp',      access: ['permitAll']],
+		[pattern: '/shutdown',       access: ['permitAll']],
+		[pattern: '/assets/**',      access: ['permitAll']],
+		[pattern: '/**/js/**',       access: ['permitAll']],
+		[pattern: '/**/css/**',      access: ['permitAll']],
+		[pattern: '/**/images/**',   access: ['permitAll']],
+		[pattern: '/**/favicon.ico', access: ['permitAll']],
+
+		// Plugin-supplied front-end libraries: jQuery, Bootstrap and the whole
+		// CodeMirror 6 module graph. The web console does not work without them,
+		// and the generated '/**/js/**' rule only covers some of the paths.
+		[pattern: '/webjars/**',     access: ['permitAll']],
+		// The web-console runs arbitrary Groovy against the live application.
+		// securing it with ROLE_ADMIN.
+		[pattern: '/console/**',     access: ['ROLE_ADMIN']]
 ]
 
 grails.plugin.springsecurity.filterChain.chainMap = [
