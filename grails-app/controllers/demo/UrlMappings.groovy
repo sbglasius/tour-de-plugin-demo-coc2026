@@ -1,4 +1,4 @@
-package tour.de.plugin
+package demo
 
 class UrlMappings {
     static mappings = {

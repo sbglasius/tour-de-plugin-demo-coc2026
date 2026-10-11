@@ -5,7 +5,7 @@ info:
     grailsVersion: '@info.app.grailsVersion@'
 grails:
   codegen:
-    defaultPackage: tour.de.plugin
+    defaultPackage: demo
   profile: web
   views:
     gsp:

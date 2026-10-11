@@ -1,4 +1,4 @@
-package tour.de.plugin
+package demo
 import grails.plugin.geb.ContainerGebSpec
 import grails.testing.mixin.integration.Integration
 
