@@ -16,7 +16,19 @@ class BootStrapService {
             new Order(customer: 'Barbara Liskov', email: 'barbara@example.com',
                     status: OrderStatus.CANCELLED, total: 15.75G).save(failOnError: true)
         }
-
     }
 
+    void createUserAndRoles() {
+        if (!Role.count()) {
+            def userRole = new Role(authority: 'ROLE_USER').save(failOnError: true)
+            def adminRole = new Role(authority: 'ROLE_ADMIN').save(failOnError: true)
+
+            def soeren = new User(username: 'sbglasius', password: 'password').save(failOnError: true)
+            def guest = new User(username: 'guest', password: 'password').save(failOnError: true)
+
+            UserRole.create(soeren, adminRole)
+            UserRole.create(guest, userRole)
+        }
+    }
+    
 }
